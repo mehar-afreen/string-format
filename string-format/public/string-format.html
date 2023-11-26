@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Text</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        body {
+            height:100vh;
+            padding-top:30px;
+        }
+        .card-move {
+            border:3px solid black;
+            margin-top:60px;
+            height:300px;
+            padding:20px;
+            text-align:center;
+            margin:60px;
+            box-shadow:5px 5px 5px gray;
+        }
+        button {
+                margin-right:10px;
+                width:80px;
+        }
+        h4 {
+            margin-bottom:15px;
+        }
+        @media screen and (orientation:landscape) {
+            .style-card {
+                display:flex;
+                justify-content: space-around;
+                text-align:center;
+            }
+        }
+        @media screen and (orientation:portrait){
+            .style-card {
+                padding:40px;
+            }
+            div {
+                margin-bottom:20px;
+            }
+            .card-move {
+                height:220px;
+                margin-top:30px;
+            }
+            body {
+                padding-bottom:20px;
+                padding-top:10px;
+            }
+        }
+
+    </style>
+    <script type="text/javascript">
+        function changeRange() {
+            var fontRange = document.getElementById("rangeSize").value;
+            var para = document.getElementById("sampleDisplay");
+            para.innerHTML = "Javascript String Format".fontsize(fontRange);
+
+        }
+        function colorPicker() {
+            var colors = document.getElementById("colorPicker").value;
+            var txtColorValue = document.getElementById("txtColor");
+            txtColorValue.value = colors;
+            var para = document.getElementById("sampleDisplay");
+            para.style.color = colors;
+        }
+        function selectStyle() {
+            var selectStyleElement = document.getElementById("selectStyle").value;
+            var para = document.getElementById("sampleDisplay");
+            if(selectStyleElement == "bold") {
+                para.style.fontWeight = "bold";
+                para.style.fontStyle = "normal";
+            }
+            else {
+                para.style.fontStyle = "italic";
+                para.style.fontWeight = "normal";
+
+            }
+        }
+        function leftClick() {
+            var LeftBtn = document.getElementById("AlignLeft");
+            var para = document.getElementById("sampleDisplay");
+            para.style.textAlign = "left";
+
+        }
+        function centerClick() {
+            var centerBtn = document.getElementById("AlignCenter");
+            var para = document.getElementById("sampleDisplay");
+            para.style.textAlign = "center";
+        }
+        function rightClick() {
+            var centerBtn = document.getElementById("AlignCenter");
+            var para = document.getElementById("sampleDisplay");
+            para.style.textAlign = "right";
+        }
+    </script>
+</head>
+<body>
+    <div class="style-card mt-5">
+        <div>
+            <h4>Font Size</h4>
+            <input type="range" class="form-range" id="rangeSize" onchange="changeRange()" min="1" max="7" value="2">
+        </div>
+        <div>
+            <h4>Color</h4>
+            <div class="d-flex">
+                <input type="color" class="form-control-color me-2" id="colorPicker" onblur="colorPicker()">
+                <input type="text" id="txtColor" class="form-control">
+            </div>
+        </div>
+        <div>
+            <h4>Font Style</h4>
+            <select class="form-select" id="selectStyle" onclick="selectStyle()">
+                <option>Select style</option>
+                <option>bold</option>
+                <option>Italics</option>
+            </select>
+        </div>
+        <div>
+            <h4>Align</h4>
+            <button class="btn btn-outline-primary" id="AlignLeft" onclick="leftClick()">Left</button>
+            <button class="btn btn-outline-primary" id="AlignCenter" onclick="centerClick()">Center</button>
+            <button class="btn btn-outline-primary" id="AlignRight" onclick="rightClick()">Right</button>
+        </div>
+    </div>
+    <div class="card-move">
+        <h1 class="text-center">Sample Text</h1>
+        <p id="sampleDisplay">Javascript string Formats</p>
+        <p id="trail"></p>
+    </div>
+</body>
+</html>
